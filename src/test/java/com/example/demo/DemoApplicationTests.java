@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.web.client.RestTemplate;
 import org.testcontainers.containers.OracleContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import org.testcontainers.utility.DockerImageName;
@@ -32,19 +34,14 @@ class DemoApplicationTests {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    @Container
+    @ServiceConnection
     static OracleContainer oracleContainer = new OracleContainer(
             DockerImageName.parse("gvenzl/oracle-free:23.3-faststart")
                     .asCompatibleSubstituteFor("gvenzl/oracle-xe"))
                 .withDatabaseName("pdb1")
                 .withUsername("testuser")
                 .withPassword(("testpwd"));
-
-    @DynamicPropertySource
-    static void configureProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", oracleContainer::getJdbcUrl);
-        registry.add("spring.datasource.username", oracleContainer::getUsername);
-        registry.add("spring.datasource.password", oracleContainer::getPassword);
-    }
 
     @BeforeAll
     static void beforeAll() {
