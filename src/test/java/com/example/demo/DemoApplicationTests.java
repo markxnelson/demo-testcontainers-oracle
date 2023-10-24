@@ -43,16 +43,6 @@ class DemoApplicationTests {
                 .withUsername("testuser")
                 .withPassword(("testpwd"));
 
-    @BeforeAll
-    static void beforeAll() {
-        oracleContainer.start();
-    }
-
-    @AfterAll
-    static void afterAll() {
-        oracleContainer.stop();
-    }
-
     @Autowired
     AnimalRepository animalRepository;
 
