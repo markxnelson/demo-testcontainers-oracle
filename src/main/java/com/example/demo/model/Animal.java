@@ -19,6 +19,10 @@ public class Animal {
 
     public Animal() {}
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

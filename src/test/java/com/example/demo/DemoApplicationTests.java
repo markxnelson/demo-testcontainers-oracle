@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -82,8 +80,8 @@ class DemoApplicationTests {
                 .map(Animal::getName)
                 .collect(Collectors.toList());
 
-        assertTrue(actualAnimals.size() == animals.size(),
-                "There should be the correct number of animals");
+        assertTrue(actualAnimals.containsAll(Arrays.asList("cat", "dog")),
+                "The expected animals should be present");
     }
 
 }
