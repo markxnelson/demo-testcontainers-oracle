@@ -9,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import org.testcontainers.containers.OracleContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.oracle.OracleContainer;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import org.testcontainers.utility.DockerImageName;
 
@@ -33,8 +33,8 @@ class DemoApplicationTests {
     @Container
     @ServiceConnection
     static OracleContainer oracleContainer = new OracleContainer(
-            DockerImageName.parse("gvenzl/oracle-free:23.3-faststart")
-                    .asCompatibleSubstituteFor("gvenzl/oracle-xe"))
+            DockerImageName.parse("gvenzl/oracle-free:slim-faststart")
+                    .asCompatibleSubstituteFor("gvenzl/oracle-free"))
                 .withDatabaseName("pdb1")
                 .withUsername("testuser")
                 .withPassword(("testpwd"));

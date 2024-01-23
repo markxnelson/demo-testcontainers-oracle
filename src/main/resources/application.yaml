@@ -9,15 +9,15 @@ spring:
         format_sql: true
     show-sql: true
 
-  datasource:
-    url: jdbc:oracle:thin:@//127.0.0.1:1521/pdb1
-    username: mark
-    password: Welcome123
-    driver-class-name: oracle.jdbc.OracleDriver
-    type: oracle.ucp.jdbc.PoolDataSource
-    oracleucp:
-      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
-      connection-pool-name: CustomerConnectionPool
-      initial-pool-size: 15
-      min-pool-size: 10
-      max-pool-size: 30
+#  datasource:
+#    url: jdbc:oracle:thin:@//127.0.0.1:1521/pdb1
+#    username: mark
+#    password: Welcome123
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    type: oracle.ucp.jdbc.PoolDataSource
+#    oracleucp:
+#      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+#      connection-pool-name: CustomerConnectionPool
+#      initial-pool-size: 15
+#      min-pool-size: 10
+#      max-pool-size: 30
